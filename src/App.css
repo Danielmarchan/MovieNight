@@ -1,32 +1,113 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+/*Global*/
+body {
+  background-color: black;
   color: white;
+  font-family: 'Open Sans', sans-serif;
+}
+h2 {
+  font-size: 36px;
+  line-height: 1.75;
+  font-weight: 400;
 }
 
-.App-link {
-  color: #61dafb;
+/*Carousel*/
+.carousel-container {
+  width: 95%;
+  margin: 0 auto;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/*CarouselItem*/
+.carousel-item {
+    position:relative;
+    width:95%;
+    margin: 0 auto;
+}
+.poster {
+    width:100%;
+    margin: 0 auto;
+    vertical-align:top;
+}
+.carousel-item:after, .image:before {
+    position:absolute;
+    opacity:0;
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+}
+.carousel-item:after {
+    content:'\A';
+    width:100%; height:100%;
+    top:0; left:0;
+    background:rgba(0,0,0,0.3);
+}
+.carousel-item:hover:after, .carousel-item:hover:before {
+    opacity:1;
+    cursor: pointer;
+}
+
+/*Carousel arrows*/
+.next-arrow, .prev-arrow {
+  z-index: 5;
+  width: 50px;
+  height: 100%;
+  background-color: white;
+  position: absolute;
+  display: inline-block;
+  cursor: pointer;
+  opacity: 0.2;
+  border-radius: 5px;
+}
+
+.next-arrow {
+  top: 0;
+  left: 100%;
+}
+
+.prev-arrow {
+  right: 100%;
+}
+
+.far {
+  width: 100%;
+  height: 50px;
+}
+.slick-next.slick-disabled:before, .slick-prev.slick-disabled:before {
+  opacity: 0;
+}
+
+/*Trending*/
+.trending-container {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.trending-item {
+  position: relative;
+  width:100%;
+  margin: 0 auto;
+  max-height: 600px;
+}
+.trending-image {
+  position: relative;
+  width:100%;
+  margin: 0 auto;
+  vertical-align: middle;
+  max-height: 600px;
+  object-fit: cover;
+  object-position: 50% 0;
+  -webkit-filter: grayscale;
+  -webkit-filter: brightness(60%); 
+}
+.trending-info {
+  position: absolute;
+  top: 66.66%;
+  left: 2.5%;
+}
+.trending-info  h3, .trending-info h1 {
+  font-weight: 400;
+}
+.trending-info h3 {
+  font-size: 1.5em;
+}
+.trending-info h1 {
+  font-size: 3em;
 }
