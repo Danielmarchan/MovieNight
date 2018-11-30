@@ -3,16 +3,22 @@ body {
   background-color: black;
   color: white;
   font-family: 'Open Sans', sans-serif;
+  margin: 0;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 400;
 }
 h2 {
   font-size: 36px;
   line-height: 1.75;
-  font-weight: 400;
+}
+a {
+  color: #00AFFF;
 }
 
 /*Carousel*/
 .carousel-container {
-  width: 95%;
+  width: 93%;
   margin: 0 auto;
 }
 
@@ -47,38 +53,43 @@ h2 {
 
 /*Carousel arrows*/
 .next-arrow, .prev-arrow {
-  z-index: 5;
+  z-index: 1;
   width: 50px;
   height: 100%;
-  background-color: white;
+  background-color: transparent;
   position: absolute;
-  display: inline-block;
   cursor: pointer;
-  opacity: 0.2;
+  display: flex;
+  align-items: center;
+  text-align: center;
   border-radius: 5px;
 }
-
-.next-arrow {
-  top: 0;
-  left: 100%;
-}
-
-.prev-arrow {
-  right: 100%;
-}
-
-.far {
+.arrow-icon {
+  display: inline-block;
+  font-size: 30px;
   width: 100%;
   height: 50px;
+  color: white;
+  z-index: 2;
 }
-.slick-next.slick-disabled:before, .slick-prev.slick-disabled:before {
-  opacity: 0;
+.next-arrow {
+  top: 0;
+  right: 0;
+  margin-right: -50px; 
+}
+.prev-arrow {
+  left: 0;
+  margin-left: -50px;
+}
+
+.next-arrow:hover, .prev-arrow:hover {
+  background-color: rgba(255, 255, 255, 0.15);
 }
 
 /*Trending*/
 .trending-container {
   width: 100%;
-  margin: 0 auto;
+  margin: 55px auto 0 auto;
 }
 
 .trending-item {
@@ -111,4 +122,63 @@ h2 {
 }
 .trending-info h1 {
   font-size: 3em;
+}
+
+/*Header*/
+.header {
+  background-color: #181A1D;
+  display: flex;
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  right: 0;
+  flex-basis: 100%;
+  text-align: center;
+  height: 55px;
+  align-content: center;
+}
+.header h3 {
+  display: inline-block;
+  width: 100px;
+  margin: 0;
+  margin-top: 12.5px;
+  color: #dcdcdc;
+}
+.logo, .tabs {
+  display: inline-block;
+  margin: 0;
+  margin-left: 30px;
+  align-self: flex-start;
+  height: 100%;
+}
+.logo {
+  margin-top: 7px;
+  font-size: 1.75em;
+  font-family: 'Righteous', cursive;
+}
+.search {
+  display: inline-block;
+  margin-left: auto;
+  margin-right: 30px;
+  height: 100%;
+}
+.search h3 {
+  width: 75px;
+}
+.search-icon {
+  display: inline-block;
+  font-size: 15px;
+}
+.blue-text {
+  color: #00AFFF;
+}
+
+/*Footer*/
+.footer {
+  background-color: #181A1D;
+  text-align: center;
+  margin-top: 100px;
+  padding: 40px 0;
+  font-size: 0.9em;
 }

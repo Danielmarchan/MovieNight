@@ -34,7 +34,9 @@ class Carousel extends Component {
           edgeFriction: 0.35,
           fade: false,
           focusOnSelect: false,
-          swipe: true
+          swipe: true,
+          nextArrow: <NextArrow />,
+          prevArrow: <PrevArrow />
           
         };
         return (

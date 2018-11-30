@@ -1,6 +1,6 @@
 import React from 'react';
 import Slider from "react-slick";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import FontAwesome from 'react-fontawesome';
 
 export const PrevArrow = ({ onClick, currentSlide }) => {
     return (
@@ -8,7 +8,7 @@ export const PrevArrow = ({ onClick, currentSlide }) => {
         className="prev-arrow"
         onClick={onClick}
         >
-            <FontAwesomeIcon icon="stroopwafel" />
+            <FontAwesome className="arrow-icon" name="chevron-left" />
         </div>   
     );
 }
@@ -20,7 +20,7 @@ export const NextArrow = ({ onClick, currentSlide, slidesToShow, slideCount }) =
         className="next-arrow"
         onClick={onClick}
         >
-            <FontAwesomeIcon icon="stroopwafel" />
+            <FontAwesome className="arrow-icon" name="chevron-right" />
         </div>   
     );
 }

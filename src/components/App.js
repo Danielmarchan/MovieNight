@@ -8,6 +8,7 @@ import Carousel from './Carousel';
 import Explore from './Explore';
 import Header from './Header';
 import Trending from './Trending';
+import Footer from './Footer';
 
 //Font Awesome
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -24,9 +25,10 @@ class App extends Component {
         { context => {
           return (
             <div className="App">
-              <Trending getData={context.actions.getData} />
               <Header />
+              <Trending getData={context.actions.getData} />
               <Explore getData={context.actions.getData} />
+              <Footer />
             </div>
           );
       }}
