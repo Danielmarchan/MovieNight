@@ -7,13 +7,20 @@ class Carousel extends Component {
     constructor() {
         super();
         this.state = {
-          data: []
+          data: [],
+          hover: false
         }
     }
     
     //Methods
     componentDidMount = () => {
         this.props.getData(this, this.props.endpoint);
+    }
+    
+    handleMouseHover = () => {
+        this.setState(prevState => (
+            this.state.hover = !prevState.hover
+        ));
     }
         
     render() {
@@ -35,14 +42,20 @@ class Carousel extends Component {
           fade: false,
           focusOnSelect: false,
           swipe: true,
-          nextArrow: <NextArrow />,
-          prevArrow: <PrevArrow />
+          nextArrow: <NextArrow hover={this.state.hover} />,
+          prevArrow: <PrevArrow hover={this.state.hover} />
           
         };
         return (
-            <div className="carousel-container">
+            <div 
+                className="carousel-container"
+                onMouseEnter={this.handleMouseHover}
+                onMouseLeave={this.handleMouseHover}
+            >
                 <h2>{this.props.category}</h2>
-                <Slider {...settings}>
+                <Slider 
+                    {...settings}
+                >
                     {
                         this.state.data.map(movie => {
                             return(
