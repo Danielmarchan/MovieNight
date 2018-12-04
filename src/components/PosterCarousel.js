@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
-import CarouselItem from './CarouselItem';
+import PosterCarouselItem from './PosterCarouselItem';
 import Slider from "react-slick";
 import {NextArrow, PrevArrow} from './Arrows.js';
+import axios from 'axios';
 
-class Carousel extends Component {
+class PosterCarousel extends Component {
     constructor() {
         super();
         this.state = {
@@ -12,9 +13,24 @@ class Carousel extends Component {
         }
     }
     
+    //Method
+    handleGetData = (endpoint) => {
+        
+        axios.get(endpoint)
+            .then(response => {
+                 this.setState({
+                    data: response.data.results
+                });
+            })
+            .catch(error => {
+              console.log('Error fetching and parsing data', error);
+            });
+            
+    }
+    
     //Methods
     componentDidMount = () => {
-        this.props.getData(this, this.props.endpoint);
+        this.handleGetData(this.props.endpoint);
     }
     
     handleMouseHover = () => {
@@ -57,9 +73,12 @@ class Carousel extends Component {
                     {...settings}
                 >
                     {
-                        this.state.data.map(movie => {
+                        this.state.data.map(item => {
                             return(
-                                <CarouselItem movie={movie} />
+                                <PosterCarouselItem 
+                                    item={item}
+                                    match={this.props.match}    
+                                />
                             );
                         })
                     }
@@ -69,4 +88,4 @@ class Carousel extends Component {
     }
 }
 
-export default Carousel;
+export default PosterCarousel;
