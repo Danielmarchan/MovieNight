@@ -70,13 +70,6 @@ class Movies extends Component {
           match={this.props.match}
       />
       
-      {/*Documentaries*/}
-      <PosterCarousel
-          category="Documentaries"
-          endpoint='https://api.themoviedb.org/3/discover/movie?api_key=9512b36f031887e7c9ad226e2c26a6b2&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=99'
-          match={this.props.match}
-      />
-      
       {/*Animated Movies*/}
       <PosterCarousel
           category="Animated Movies"

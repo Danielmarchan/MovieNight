@@ -68,18 +68,20 @@ class PosterCarousel extends Component {
                 onMouseEnter={this.handleMouseHover}
                 onMouseLeave={this.handleMouseHover}
             >
-                <h2>{this.props.category}</h2>
+                <h1>{this.props.category}</h1>
                 <Slider 
                     {...settings}
                 >
                     {
                         this.state.data.map(item => {
-                            return(
-                                <PosterCarouselItem 
-                                    item={item}
-                                    match={this.props.match}    
-                                />
-                            );
+                            if (item.overview !=="") {
+                                return(
+                                    <PosterCarouselItem 
+                                        item={item}
+                                        match={this.props.match}    
+                                    />
+                                );
+                            }
                         })
                     }
                 </Slider>

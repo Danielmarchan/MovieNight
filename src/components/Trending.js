@@ -10,9 +10,9 @@ class Trending extends Component {
         super();
         this.state = {
           data: [],
-          attr: "title",
+          name: "title",
           format: "Movies",
-          hover: false
+          hover: false,
         }
     }
     
@@ -36,22 +36,22 @@ class Trending extends Component {
         
         if (this.props.match.path === "/movies") {
           this.setState({
-            attr: "title",
+            name: "title",
             format: "Movies"
           });
         }
         else if (this.props.match.path === "/tv") {
           this.setState({
-            attr: "name",
+            name: "name",
             format: "TV Shows"
           });
         }
     }
     
     handleMouseHover = () => {
-        this.setState(prevState => (
-            this.state.hover = !prevState.hover
-        ));
+      this.setState(prevState => (
+          this.state.hover = !prevState.hover
+      ));
     }
     
   render() {
@@ -77,17 +77,24 @@ class Trending extends Component {
         <Slider {...settings}>
             {
                 this.state.data.map(item => {
+                
+                    let backdropSrc = "https://ak9.picdn.net/shutterstock/videos/14759539/thumb/1.jpg"
+                
+                    if (item.backdrop_path !== null) {
+                      backdropSrc = "https://image.tmdb.org/t/p/w1280" + item.backdrop_path;
+                    }
+                
                     return(
-                        <Link to={ this.props.match.path + '/' + item.id + '/' + item[this.state.attr].replace(/[^\w\s]/gi, '').replace(/\s/g, '-') }>
+                        <Link to={ this.props.match.path + '/' + item.id + '/' + item[this.state.  name].replace(/[^\w\s]/gi, '').replace(/\s/g, '-') }>
                             <div className="trending-item">
                                 <img 
                                     className="trending-image"
-                                    src={"https://image.tmdb.org/t/p/w1280" + item.backdrop_path}
-                                    alt={item[this.state.attr]}
+                                    src={backdropSrc}
+                                    alt={item[this.state.  name]}
                                 />
                                 <div className="trending-info">
                                     <h3>Popular {this.state.format}</h3>
-                                    <h1>{item[this.state.attr]}</h1>
+                                    <h1>{item[this.state.  name]}</h1>
                                 </div>
                             </div>
                         </Link>

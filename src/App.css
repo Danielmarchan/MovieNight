@@ -9,7 +9,6 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 400;
 }
 h2 {
-  font-size: 2.25em;
   line-height: 1.75;
 }
 a {
@@ -21,7 +20,7 @@ a {
   width: 100%;
   margin: 0 auto;
 }
-.carousel-container .slick-list, .carousel-container h2 {
+.carousel-container .slick-list, .carousel-container h1 {
   width: 94%;
   margin: 25px auto;
 }
@@ -41,18 +40,32 @@ a {
 .carousel-item:after, .image:before {
     position:absolute;
     opacity:0;
-    transition: all 0.5s;
-    -webkit-transition: all 0.5s;
 }
 .carousel-item:after {
     content:'';
     width:100%; height:100%;
     top:0; left:0;
-    background:rgba(0,0,0,0.3);
+    background:rgba(0,0,0,0.8);
 }
 .carousel-item:hover:after, .carousel-item:hover:before {
     opacity:1;
     cursor: pointer;
+}
+.hover-title {
+  z-index: 10;
+  color: white;
+  text-decoration: none;
+  text-align: center;
+  position: absolute;
+  top: 20%;
+  left: 5%;
+  right: 5%;
+  display: inline-block;
+  margin: 0;
+  width: 90%;
+}
+.hover-title h3 {
+  line-height: 1.25em;
 }
 
 /*Carousel arrows*/
@@ -128,7 +141,7 @@ a {
 
 /*Header*/
 .header {
-  background: linear-gradient(#181A1D, transparent);
+  background: linear-gradient(#181A1D,  transparent);
   display: flex;
   position: fixed;
   z-index: 10;
@@ -211,4 +224,68 @@ a {
 }
 .not-found-icon {
   font-size: 35px;
+}
+
+/*MovieInfo*/
+.div-info {
+  position: relative;
+  bottom: 200px;
+  background: linear-gradient(transparent, #000, #000, #000);
+}
+.info-image {
+  position: relative;
+  width:100%;
+  margin: 0 auto;
+  vertical-align: middle;
+  max-height: 600px;
+  object-fit: cover;
+  object-position: 50% 0;
+}
+
+/*TopCard*/
+.top-card {
+  padding: 25px 0;
+}
+.grid-card {
+  font-weight: 600;
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+}
+.grid-card h1, h2, h3 {
+  margin: 5px 0;
+}
+.grid-card h1 {
+  font-weight: 600!important;
+  font-size: 3.5em;
+  line-height: 1em;
+}
+.grid-card h2 {
+  font-weight: 600!important;
+  font-size: 2.5em;
+}
+.grid-card h3, .summary p {
+  color: #dcdcdc;
+}
+.poster-div {
+  padding: 0 60px;
+}
+.grid-poster {
+  width: 100%;
+}
+.rating-div {
+  display: flex;
+  align-items: center;
+}
+.fa-star {
+  color: #00AFFF;
+}
+.rating-div > h3 {
+  display: inline-block;
+  margin-left: 10px;
+}
+.summary {
+  padding: 25px 5%;
+}
+.summary h1 {
+  color: #dcdcdc;
 }
