@@ -10,10 +10,8 @@ import ScrollToTop from './components/ScrollToTop';
 
 ReactDOM.render(
     <BrowserRouter basename={process.env.PUBLIC_URL}>
-        {/*Scroll to top when routing*/}
-        <ScrollToTop>
+        
             <App />
-        </ScrollToTop>
     </BrowserRouter>,
     document.getElementById('root')
 );
