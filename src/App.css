@@ -228,23 +228,30 @@ a {
 
 /*MovieInfo*/
 .div-info {
-  position: relative;
-  bottom: 200px;
-  background: linear-gradient(transparent, #000, #000, #000);
+  margin-top: 500px;
+  background: linear-gradient(rgba(0, 0, 0, 0.4), #000, #000, #000, #000, #000, #000, #000, #000, #000, #000, #000);
+  border-top: solid black 0.5px;
 }
 .info-image {
-  position: relative;
-  width:100%;
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
   margin: 0 auto;
   vertical-align: middle;
   max-height: 600px;
   object-fit: cover;
   object-position: 50% 0;
 }
+.summary {
+  padding: 25px 3%;
+}
 
 /*TopCard*/
 .top-card {
-  padding: 25px 0;
+  padding-top: 25px;
+  margin-bottom: 50px;
 }
 .grid-card {
   font-weight: 600;
@@ -283,9 +290,77 @@ a {
   display: inline-block;
   margin-left: 10px;
 }
-.summary {
-  padding: 25px 5%;
+
+
+/*Trailer Carousel*/
+.trailer-carousel {
+  width: 100%;
+  margin-bottom: 50px;
 }
-.summary h1 {
-  color: #dcdcdc;
+.trailer-carousel .slick-slider {
+  width: 100%;
+}
+.trailer-container .slick-list, .trailer-carousel h1 {
+  display: inline-block;
+  width: 94%;
+  margin-left: 3%;
+}
+.trailer-item {
+  position: relative;
+	padding-bottom: 56.25%; /* 16:9 */
+	padding-top: 25px;
+	height: 0;
+	width: 95%;
+	margin: 0 2.5%;
+}
+.trailer-item iframe {
+  position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+/*PersonCarousel*/
+.person-carousel {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.person-container {
+    width: 100%;
+    padding-top: 5px;
+    margin-bottom: 50px;
+}
+.person-carousel .slick-list, .person-carousel h1 {
+  width: 94%;
+  margin: 25px auto;
+}
+.person-item {
+    position: relative;
+    width: 95%;
+    margin: 0 auto;
+    text-align: center;
+    height: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+.person-item img {
+    width: 80%;
+    margin: auto;
+    vertical-align: top;
+    
+}
+.person-item div {
+  padding-top: 0;
+}
+.person-item h4 {
+  margin: 1em 0;
+  font-weight: 600;
+}
+.person-item p {
+  margin: 0;
+}
+.person-info {
+  min-height: 100px;
 }

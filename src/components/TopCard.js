@@ -11,6 +11,7 @@ const TopCard = ({posterSrc, name, year, rating, genres, summary}) => {
                     <img
                         className="grid-poster"
                         src={posterSrc}
+                        alt={name}
                     />
                 </div>
                     <div>
@@ -28,10 +29,6 @@ const TopCard = ({posterSrc, name, year, rating, genres, summary}) => {
                         <h3>{ genres }</h3>
                     </div>
                 </div>
-            </div>
-            <div className="summary">
-                <h1>Summary</h1>
-                <p>{ summary }</p>
             </div>
         </div>    
     );

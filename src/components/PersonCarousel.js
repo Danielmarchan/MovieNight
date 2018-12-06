@@ -3,19 +3,18 @@ import Slider from "react-slick";
 import {NextArrow, PrevArrow} from './Arrows.js';
 import axios from 'axios';
 
-class TrailerCarousel extends Component {
+class PersonCarousel extends Component {
     state = {
         data: [],
-        hover: false
+        hover: false,
     }
     
     //Method
     handleGetData = (endpoint) => {
-        
         axios.get(endpoint)
             .then(response => {
                  this.setState({
-                    data: response.data.results
+                    data: response.data[this.props.people]
                 });
             })
             .catch(error => {
@@ -39,8 +38,8 @@ class TrailerCarousel extends Component {
       dots: false,
       infinite: false,
       speed: 500,
-      slidesToShow: 4,
-      slidesToScroll: 4,
+      slidesToShow: 8,
+      slidesToScroll: 8,
       autoplay: false,
       speed: 2500,
       arrows: true,
@@ -49,22 +48,36 @@ class TrailerCarousel extends Component {
     };
     
     if (this.state.data.length != 0) {
+        console.log(this.state.data.length);
         return (
-            <div className="trailer-carousel">
-                <h1>Trailers</h1>
+            <div className="person-carousel">
+                <h1>Cast</h1>
                 <div 
                     onMouseEnter={this.handleMouseHover}
                     onMouseLeave={this.handleMouseHover}
-                    className="trailer-container"
+                    className="person-container"
                   >
                     <Slider {...settings}>
                         {
                             this.state.data.map(item => {
                             
+                                let profileSrc = "https://m.media-amazon.com/images/G/01/imdb/images/nopicture/medium/name-2135195744._CB470041852_.png";
+                                
+                                if (item.profile_path != null) {
+                                    profileSrc = `https://image.tmdb.org/t/p/w185${item.profile_path}`;
+                                }
+                            
                                 return(
-                                <div class="trailer-container">
-                                    <div className="trailer-item">
-                                        <iframe src={`https://www.youtube.com/embed/${item.key}`} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen;" allowfullscreen></iframe>
+                                <div>
+                                    <div className="person-item">
+                                        <img 
+                                            src={profileSrc}
+                                            alt={item.name}
+                                        />
+                                        <div className="person-info">
+                                            <h4>{item.name}</h4>
+                                            <p>{item.character}</p>
+                                        </div>
                                     </div>
                                 </div>
                                 );
@@ -76,9 +89,9 @@ class TrailerCarousel extends Component {
         );
     }
     else {
-        return <div />
+        return <div />;
     }
   }
 }
 
-export default TrailerCarousel;
+export default PersonCarousel;

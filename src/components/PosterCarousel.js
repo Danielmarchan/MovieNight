@@ -13,7 +13,7 @@ class PosterCarousel extends Component {
         }
     }
     
-    //Method
+    //Methods
     handleGetData = (endpoint) => {
         
         axios.get(endpoint)
@@ -27,8 +27,6 @@ class PosterCarousel extends Component {
             });
             
     }
-    
-    //Methods
     componentDidMount = () => {
         this.handleGetData(this.props.endpoint);
     }
@@ -62,31 +60,37 @@ class PosterCarousel extends Component {
           prevArrow: <PrevArrow hover={this.state.hover} />
           
         };
-        return (
-            <div 
-                className="carousel-container"
-                onMouseEnter={this.handleMouseHover}
-                onMouseLeave={this.handleMouseHover}
-            >
-                <h1>{this.props.category}</h1>
-                <Slider 
-                    {...settings}
+        
+        if (this.state.data.length > 0) {
+            return (
+                <div 
+                    className="carousel-container"
+                    onMouseEnter={this.handleMouseHover}
+                    onMouseLeave={this.handleMouseHover}
                 >
-                    {
-                        this.state.data.map(item => {
-                            if (item.overview !=="") {
-                                return(
-                                    <PosterCarouselItem 
-                                        item={item}
-                                        match={this.props.match}    
-                                    />
-                                );
-                            }
-                        })
-                    }
-                </Slider>
-              </div>
-        );
+                    <h1>{this.props.category}</h1>
+                    <Slider 
+                        {...settings}
+                    >
+                        {
+                            this.state.data.map(item => {
+                                if (item.overview !=="") {
+                                    return(
+                                        <PosterCarouselItem 
+                                            item={item}
+                                            setMovie={this.props.setMovie}
+                                        />
+                                    );
+                                }
+                            })
+                        }
+                    </Slider>
+                  </div>
+            );
+        }
+        else {
+            return <div />;
+        }
     }
 }
 

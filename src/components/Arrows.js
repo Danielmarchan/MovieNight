@@ -2,7 +2,7 @@ import React from 'react';
 import Slider from "react-slick";
 import FontAwesome from 'react-fontawesome';
 
-export const PrevArrow = ({ onClick, currentSlide, hover }) => {
+export const PrevArrow = ({ onClick, hover }) => {
     if (hover) {
         return (
             <div 
@@ -19,7 +19,7 @@ export const PrevArrow = ({ onClick, currentSlide, hover }) => {
 }
 
 
-export const NextArrow = ({ onClick, currentSlide, slidesToShow, slideCount, hover }) => {
+export const NextArrow = ({ onClick, hover }) => {
     if (hover) {
         return (
             <div 
