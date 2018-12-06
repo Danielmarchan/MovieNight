@@ -471,6 +471,10 @@ a {
   }
 }
 @media (max-width: 600px) {
+  /*Global*/
+  h1 {
+    font-size: 1.75em;
+  }
   /*MovieInfo / TvInfo*/
   .info-image {
     margin-top: 95px;
