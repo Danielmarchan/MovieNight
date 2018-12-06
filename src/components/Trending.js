@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import Slider from "react-slick";
 import { Link } from 'react-router-dom';
-import {NextArrow, PrevArrow} from './Arrows.js';
 import axios from 'axios';
+
+/*Components*/
+import {NextArrow, PrevArrow} from './Arrows.js';
 
 class Trending extends Component {
     
@@ -16,7 +18,7 @@ class Trending extends Component {
         }
     }
     
-    //Method
+    //Methods
     handleGetData = (endpoint) => {
         
         axios.get(endpoint)
@@ -31,9 +33,17 @@ class Trending extends Component {
             
     }
     
+    handleMouseHover = () => {
+      this.setState(prevState => (
+          this.state.hover = !prevState.hover
+      ));
+    }
+    
+    /*Mount*/
     componentWillMount = () => {
         this.handleGetData(this.props.endpoint);
         
+        /*Use corect attributes for movies or tv*/
         if (this.props.match.path === "/movies") {
           this.setState({
             name: "title",
@@ -48,13 +58,9 @@ class Trending extends Component {
         }
     }
     
-    handleMouseHover = () => {
-      this.setState(prevState => (
-          this.state.hover = !prevState.hover
-      ));
-    }
-    
   render() {
+    
+    /*Slider settings*/
     const settings = {
       dots: false,
       infinite: true,
@@ -68,6 +74,7 @@ class Trending extends Component {
       nextArrow: <NextArrow hover={this.state.hover} />,
       prevArrow: <PrevArrow hover={this.state.hover} />
     };
+    
     return (
       <div 
         onMouseEnter={this.handleMouseHover}
@@ -78,14 +85,19 @@ class Trending extends Component {
             {
                 this.state.data.map(item => {
                 
+                    /*If image is not found, use default*/
                     let backdropSrc = "https://ak9.picdn.net/shutterstock/videos/14759539/thumb/1.jpg"
                 
                     if (item.backdrop_path !== null) {
                       backdropSrc = "https://image.tmdb.org/t/p/w1280" + item.backdrop_path;
                     }
-                
+                    
+                        /*Link using id and movie/tv title with only alphanumeric characters and no spaces*/
                     return(
-                        <Link to={ this.props.match.path + '/' + item.id + '/' + item[this.state.  name].replace(/[^\w\s]/gi, '').replace(/\s/g, '-') }>
+                        <Link 
+                          key={item.id}
+                          to={ this.props.match.path + '/' + item.id + '/' + item[this.state.  name].replace(/[^\w\s]/gi, '').replace(/\s/g, '-') }
+                        >
                             <div className="trending-item">
                                 <img 
                                     className="trending-image"

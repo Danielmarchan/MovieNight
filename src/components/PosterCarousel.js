@@ -1,15 +1,18 @@
 import React, {Component} from 'react';
-import PosterCarouselItem from './PosterCarouselItem';
 import Slider from "react-slick";
-import {NextArrow, PrevArrow} from './Arrows.js';
 import axios from 'axios';
+
+/*Components*/
+import PosterCarouselItem from './PosterCarouselItem';
+import {NextArrow, PrevArrow} from './Arrows.js';
 
 class PosterCarousel extends Component {
     constructor() {
         super();
         this.state = {
           data: [],
-          hover: false
+          hover: false,
+          slides: this.handleCalculateSlides()
         }
     }
     
@@ -27,24 +30,55 @@ class PosterCarousel extends Component {
             });
             
     }
-    componentDidMount = () => {
-        this.handleGetData(this.props.endpoint);
-    }
     
     handleMouseHover = () => {
         this.setState(prevState => (
             this.state.hover = !prevState.hover
         ));
     }
+    
+    handleCalculateSlides = () => {
+        if (window.innerWidth <= 650) {
+            return 3;
+        }
+        else if (window.innerWidth <= 850) {
+            return 4;
+        }
+        else if (window.innerWidth <= 1000) {
+            return 5;
+        }
+        else if (window.innerWidth <= 1250 ) {
+            return 6;
+        }
+        else if (window.innerWidth <= 1500) {
+            return 7;
+        }
+        else {
+            return 8;
+        }
+    }
+    
+    handleUpdateSlides = () => {
+        this.setState({slides: this.handleCalculateSlides()});
+    }
+    
+    /*Mount*/
+    componentDidMount = () => {
+        window.addEventListener("resize", this.handleUpdateSlides);
+        
+        this.handleGetData(this.props.endpoint);
+    }
         
     render() {
+        
+        /*Slider settings*/
         const settings = {
           initialSlide: 0,
           dots: false,
           infinite: false,
           speed: 500,
-          slidesToShow: 8,
-          slidesToScroll: 8,
+          slidesToShow: this.state.slides,
+          slidesToScroll: this.state.slides,
           accesibility: true,
           adaptiveHeight: false,
           arrows: true,
@@ -61,6 +95,7 @@ class PosterCarousel extends Component {
           
         };
         
+        /*If no data is found, load empty div*/
         if (this.state.data.length > 0) {
             return (
                 <div 
@@ -79,6 +114,7 @@ class PosterCarousel extends Component {
                                         <PosterCarouselItem 
                                             item={item}
                                             setMovie={this.props.setMovie}
+                                            key={item.id}
                                         />
                                     );
                                 }

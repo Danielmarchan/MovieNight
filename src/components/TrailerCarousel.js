@@ -1,15 +1,21 @@
 import React, { Component } from "react";
 import Slider from "react-slick";
-import {NextArrow, PrevArrow} from './Arrows.js';
 import axios from 'axios';
 
+/*Components*/
+import {NextArrow, PrevArrow} from './Arrows.js';
+
 class TrailerCarousel extends Component {
-    state = {
-        data: [],
-        hover: false
+    constructor() {
+        super();
+        this.state = {
+            data: [],
+            hover: false,
+            slides: this.handleCalculateSlides()
+        }
     }
     
-    //Method
+    //Methods
     handleGetData = (endpoint) => {
         
         axios.get(endpoint)
@@ -30,17 +36,41 @@ class TrailerCarousel extends Component {
       ));
     }
     
+    handleCalculateSlides = () => {
+        
+        if (window.innerWidth <= 500) {
+            return 1;
+        }
+        else if (window.innerWidth <= 850) {
+            return 2;
+        }
+        else if (window.innerWidth <= 1200) {
+            return 3;
+        }
+        else {
+            return 4;
+        }
+    }
+    
+    handleUpdateSlides = () => {
+        this.setState({slides: this.handleCalculateSlides()});
+    }
+    
+    /*Mount*/
     componentDidMount = () => {
+        window.addEventListener("resize", this.handleUpdateSlides);
+        
         this.handleGetData(this.props.endpoint);
     }
     
     render() {
+    /*Slider settings*/
     const settings = {
       dots: false,
       infinite: false,
       speed: 500,
-      slidesToShow: 4,
-      slidesToScroll: 4,
+      slidesToShow: this.state.slides,
+      slidesToScroll: this.state.slides,
       autoplay: false,
       speed: 2500,
       arrows: true,
@@ -48,6 +78,7 @@ class TrailerCarousel extends Component {
       prevArrow: <PrevArrow hover={this.state.hover} />
     };
     
+    /*If no data is found, load empty div*/
     if (this.state.data.length != 0) {
         return (
             <div className="trailer-carousel">
@@ -62,7 +93,10 @@ class TrailerCarousel extends Component {
                             this.state.data.map(item => {
                             
                                 return(
-                                <div class="trailer-container">
+                                <div
+                                    key={item.id}
+                                    class="trailer-container"
+                                >
                                     <div className="trailer-item">
                                         <iframe src={`https://www.youtube.com/embed/${item.key}`} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen;" allowfullscreen></iframe>
                                     </div>

@@ -2,6 +2,7 @@ import React from 'react';
 import Slider from "react-slick";
 import FontAwesome from 'react-fontawesome';
 
+/*Previous Arrow*/
 export const PrevArrow = ({ onClick, hover }) => {
     if (hover) {
         return (
@@ -18,7 +19,7 @@ export const PrevArrow = ({ onClick, hover }) => {
     }
 }
 
-
+/*Next Arrow*/
 export const NextArrow = ({ onClick, hover }) => {
     if (hover) {
         return (

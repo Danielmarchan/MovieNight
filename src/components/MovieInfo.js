@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+
+/*Components*/
 import TopCard from './TopCard';
 import TrailerCarousel from './TrailerCarousel';
 import PersonCarousel from './PersonCarousel';
@@ -21,7 +23,7 @@ class MovieInfo extends Component {
         writers: ""
     }
     
-    //Method
+    //Methods
     handleGetData = () => {
         axios.get(`https://api.themoviedb.org/3/movie/${this.props.match.params.id}?api_key=9512b36f031887e7c9ad226e2c26a6b2&language=en-US
 `)
@@ -38,6 +40,8 @@ class MovieInfo extends Component {
         this.setState({
             movie: movie,
             name: movie.title,
+            
+            /*If image is not found, return default*/
             backdropSrc: () => {
                     if (movie.backdrop_path === null) {
                         return "https://ak9.picdn.net/shutterstock/videos/14759539/thumb/1.jpg";
@@ -54,6 +58,7 @@ class MovieInfo extends Component {
                         return "https://image.tmdb.org/t/p/w185_and_h278_bestv2" + movie.poster_path;
                     }
                 },
+                
             year: movie.release_date.substring(0, 4),
             rating: movie.vote_average,
             genres: movie.genres.map(genre => genre.name).join(', '),
@@ -61,6 +66,7 @@ class MovieInfo extends Component {
         });
     }
     
+    /*Mount*/
     componentDidMount = () => {
         this.handleGetData();
     }
@@ -68,12 +74,15 @@ class MovieInfo extends Component {
     render () {
         return(
             <div>
+            
+                {/*Backdrop*/}
                 <img 
                     className="info-image"
                     src={this.state.backdropSrc()}
                     alt={this.state.name}
                 />
                 <div className="div-info">
+                    {/*Top Card with Info*/}
                     <TopCard 
                         posterSrc={this.state.posterSrc()}
                         name={this.state.name}
@@ -83,22 +92,25 @@ class MovieInfo extends Component {
                         summary={this.state.summary}
                     />
                     
+                    {/*Summary*/}
                     <div className="summary">
                         <h1>Summary</h1>
                         <p>{ this.state.summary }</p>
                     </div>
                     
+                    {/*Cast*/}
                     <PersonCarousel
                         people="cast"
                         endpoint={`https://api.themoviedb.org/3/movie/${this.props.match.params.id}/credits?api_key=9512b36f031887e7c9ad226e2c26a6b2`}
                     />
                     
+                    {/*Trailers*/}
                     <TrailerCarousel 
                         id={this.props.match.params.id}
                         endpoint={`https://api.themoviedb.org/3/movie/${this.props.match.params.id}/videos?api_key=9512b36f031887e7c9ad226e2c26a6b2&language=en-US`}
                     />
                     
-                    {/*Suggestions*/}
+                    {/*Similar Movies*/}
                     <PosterCarousel 
                         category="Similar Movies"
                         endpoint={`https://api.themoviedb.org/3/movie/${this.props.match.params.id}/similar?api_key=9512b36f031887e7c9ad226e2c26a6b2&language=en-US&page=1`}

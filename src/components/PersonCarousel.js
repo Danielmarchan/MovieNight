@@ -4,12 +4,16 @@ import {NextArrow, PrevArrow} from './Arrows.js';
 import axios from 'axios';
 
 class PersonCarousel extends Component {
-    state = {
-        data: [],
-        hover: false,
+     constructor() {
+        super();
+        this.state = {
+            data: [],
+            hover: false,
+            slides: this.handleCalculateSlides()
+        }
     }
     
-    //Method
+    //Methods
     handleGetData = (endpoint) => {
         axios.get(endpoint)
             .then(response => {
@@ -29,17 +33,48 @@ class PersonCarousel extends Component {
       ));
     }
     
+    handleCalculateSlides = () => {
+        
+        if (window.innerWidth <= 650) {
+            return 3;
+        }
+        else if (window.innerWidth <= 850) {
+            return 4;
+        }
+        else if (window.innerWidth <= 1000) {
+            return 5;
+        }
+        else if (window.innerWidth <= 1250 ) {
+            return 6;
+        }
+        else if (window.innerWidth <= 1500) {
+            return 7;
+        }
+        else {
+            return 8;
+        }
+    }
+    
+    handleUpdateSlides = () => {
+        this.setState({slides: this.handleCalculateSlides()});
+    }
+    
+    /*Mount*/
     componentDidMount = () => {
+        window.addEventListener("resize", this.handleUpdateSlides);
+        
         this.handleGetData(this.props.endpoint);
     }
     
     render() {
+        
+    /*Slider setiings*/
     const settings = {
       dots: false,
       infinite: false,
       speed: 500,
-      slidesToShow: 8,
-      slidesToScroll: 8,
+      slidesToShow: this.state.slides,
+      slidesToScroll: this.state.slides,
       autoplay: false,
       speed: 2500,
       arrows: true,
@@ -47,6 +82,7 @@ class PersonCarousel extends Component {
       prevArrow: <PrevArrow hover={this.state.hover} />
     };
     
+    /*If no data is found, render empty div*/
     if (this.state.data.length != 0) {
         console.log(this.state.data.length);
         return (
@@ -61,6 +97,7 @@ class PersonCarousel extends Component {
                         {
                             this.state.data.map(item => {
                             
+                                /*If image src is not found, use default image*/
                                 let profileSrc = "https://m.media-amazon.com/images/G/01/imdb/images/nopicture/medium/name-2135195744._CB470041852_.png";
                                 
                                 if (item.profile_path != null) {
@@ -68,7 +105,7 @@ class PersonCarousel extends Component {
                                 }
                             
                                 return(
-                                <div>
+                                <div key={item.id} >
                                     <div className="person-item">
                                         <img 
                                             src={profileSrc}

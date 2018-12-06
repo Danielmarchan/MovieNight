@@ -1,13 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './components/App';
 import * as serviceWorker from './serviceWorker';
 import {BrowserRouter} from 'react-router-dom';
+
+/*Components*/
+import App from './components/App';
 import ScrollToTop from './components/ScrollToTop';
 
 ReactDOM.render(
     <BrowserRouter>
+        {/*Scroll to top when routing*/}
         <ScrollToTop>
             <App />
         </ScrollToTop>

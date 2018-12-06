@@ -7,6 +7,7 @@ class Header extends Component {
         bg: {background: "linear-gradient( transparent)"}
     }
     
+    /*Methods*/
     listenScrollEvent = e => {
         if (window.scrollY > 55) {
           this.setState({bg: {backgroundColor: "#181A1D"}})
@@ -15,6 +16,7 @@ class Header extends Component {
         }
     }
 
+    /*Mount*/
     componentDidMount() {
         window.addEventListener('scroll', this.listenScrollEvent)
     }

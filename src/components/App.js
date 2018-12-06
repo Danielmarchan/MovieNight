@@ -21,9 +21,9 @@ const App = () => {
     <div className="app">
     
       <Header />
-      
-        <Switch>
         
+        {/*Routes*/}
+        <Switch>
           <Route exact path="/" render={() => <Redirect to="/movies" />} />
           <Route exact path="/movieNight" render={() => <Redirect to="/movies" />} />
           <Route exact path="/movies" component={Movies} />
@@ -31,7 +31,6 @@ const App = () => {
           <Route exact path="/tv" component={Tv} />
           <Route path="/tv/:id" component={TvInfo} />
           <Route component={NotFound} />
-          
         </Switch>
       
       <Footer />

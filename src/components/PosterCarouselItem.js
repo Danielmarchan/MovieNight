@@ -12,26 +12,7 @@ class PosterCarouselItem extends Component {
     path: window.location.pathname.split('/')[1]
   }
   
-  componentWillMount = () => {
-    if (this.state.path === "movies") {
-      this.setState({
-        name: "title",
-        date: "release_date"
-      });
-    }
-    else if (this.state.path === "tv") {
-      this.setState({
-        name: "name",
-        date: "first_air_date"
-      });
-    }
-      
-    if (this.props.item.poster_path !== null) {
-      this.setState({
-        posterSrc: "https://image.tmdb.org/t/p/w185_and_h278_bestv2" + this.props.item.poster_path
-      });
-    }
-  }
+  /*Methods*/
   
   handleMouseEnter = () => {
         this.setState({
@@ -46,20 +27,45 @@ class PosterCarouselItem extends Component {
   }
   
   handleGetData = () => {
-        axios.get(`https://api.themoviedb.org/3/movie/${this.props.match.params.id}?api_key=9512b36f031887e7c9ad226e2c26a6b2&language=en-US
-`)
-            .then(response => {
-                 this.props.setMovie(response.data)
-            })
-            .catch(error => {
-              console.log('Error fetching and parsing data', error);
-            });
-            
+    axios.get(`https://api.themoviedb.org/3/movie/${this.props.match.params.id}?api_key=9512b36f031887e7c9ad226e2c26a6b2&language=en-US
+    `)
+        .then(response => {
+             this.props.setMovie(response.data)
+        })
+        .catch(error => {
+          console.log('Error fetching and parsing data', error);
+        });
+  }
+  
+  /*Mount*/
+  componentWillMount = () => {
+    
+    /*Use correct attributes for movies or tv shows*/
+    if (this.state.path === "movies") {
+      this.setState({
+        name: "title",
+        date: "release_date"
+      });
     }
+    else if (this.state.path === "tv") {
+      this.setState({
+        name: "name",
+        date: "first_air_date"
+      });
+    }
+    
+    /*If image src is found, use it instead of default*/  
+    if (this.props.item.poster_path !== null) {
+      this.setState({
+        posterSrc: "https://image.tmdb.org/t/p/w185_and_h278_bestv2" + this.props.item.poster_path
+      });
+    }
+  }
   
   render() {
+        /*Link using id and movie/tv title with only alphanumeric characters and no spaces*/
     return (
-        <Link 
+        <Link
           to={ "/" + this.state.path + '/' + this.props.item.id + '/' + this.props.item[this.state.name].replace(/[^\w\s]/gi, '').replace(/\s/g, '-')}
           onClick={this.handleGetData}
           >
@@ -73,6 +79,8 @@ class PosterCarouselItem extends Component {
                 src={this.state.posterSrc}
                 alt={this.props.item.title}
             />
+            
+            {/*Hover*/}
             <div className="hover-title">
               <h3>
                 {
