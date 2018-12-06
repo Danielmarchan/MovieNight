@@ -25,7 +25,6 @@ const App = () => {
         {/*Routes*/}
         <Switch>
           <Route exact path="/" render={() => <Redirect to="/movies" />} />
-          <Route exact path="/movieNight" render={() => <Redirect to="/movies" />} />
           <Route exact path="/movies" component={Movies} />
           <Route path="/movies/:id" component={MovieInfo} />
           <Route exact path="/tv" component={Tv} />
