@@ -9,7 +9,7 @@ class PosterCarouselItem extends Component {
     date: "irst_air_date",
     posterSrc: "https://media.comicbook.com/files/img/default-movie.png",
     hover: false,
-    path: window.location.pathname.split('/')[1]
+    path: window.location.pathname.split('/')[2]
   }
   
   /*Methods*/

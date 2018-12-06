@@ -14,6 +14,7 @@ class Movies extends Component {
         endpoint="https://api.themoviedb.org/3/movie/popular?api_key=9512b36f031887e7c9ad226e2c26a6b2&language=en-US&page=1"  
         match={this.props.match}
       />
+      
       {/*Now Playing*/}
       <PosterCarousel
           category="Now Playing"
