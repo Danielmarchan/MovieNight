@@ -2,7 +2,7 @@
   "name": "movie-night",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://danielmarchan.github.io/movieNight/",
+  "homepage": "https://danielmarchan.github.io/MovieNight/",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.8",
     "@fortawesome/free-solid-svg-icons": "^5.5.0",

@@ -39,6 +39,9 @@ class PosterCarouselItem extends Component {
         });
   }
   
+  handleRefresh = () => {
+    window.location.reload();
+  }
   /*Mount*/
   componentWillMount = () => {
     
@@ -65,12 +68,12 @@ class PosterCarouselItem extends Component {
   }
   
   render() {
-    console.log(this.props.match.path.split('/')[1])
+    console.log(this.props.match.url);
         /*Link using id and movie/tv title with only alphanumeric characters and no spaces*/
     return (
         <Link
-          to={ this.props.match.path + '/' + this.props.item.id + '/' + this.props.item[this.state.name].replace(/[^\w\s]/gi, '').replace(/\s/g, '-')}
-          onClick={this.handleGetData}
+          to={ '/' + this.props.match.path.split('/')[1] + '/' + this.props.item.id + '/' + this.props.item[this.state.name].replace(/[^\w\s]/gi, '').replace(/\s/g, '-')}
+          onClick={this.handleRefresh}
           >
           <div 
             onMouseEnter={this.handleMouseEnter}
