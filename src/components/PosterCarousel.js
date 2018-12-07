@@ -113,7 +113,6 @@ class PosterCarousel extends Component {
                                     return(
                                         <PosterCarouselItem 
                                             item={item}
-                                            setMovie={this.props.setMovie}
                                             key={item.id}
                                             match={this.props.match}
                                         />
