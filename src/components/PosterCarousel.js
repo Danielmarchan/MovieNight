@@ -115,6 +115,7 @@ class PosterCarousel extends Component {
                                             item={item}
                                             setMovie={this.props.setMovie}
                                             key={item.id}
+                                            match={this.props.match}
                                         />
                                     );
                                 }

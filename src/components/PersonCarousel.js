@@ -84,7 +84,6 @@ class PersonCarousel extends Component {
     
     /*If no data is found, render empty div*/
     if (this.state.data.length != 0) {
-        console.log(this.state.data.length);
         return (
             <div className="person-carousel">
                 <h1>Cast</h1>

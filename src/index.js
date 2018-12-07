@@ -2,19 +2,19 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
-import {BrowserRouter} from 'react-router-dom';
+import {HashRouter} from 'react-router-dom';
 
 /*Components*/
 import App from './components/App';
 import ScrollToTop from './components/ScrollToTop';
 
 ReactDOM.render(
-    <BrowserRouter basename={"/movieNight"}>
+    <HashRouter>
         {/*Scroll to top when routing*/}
         <ScrollToTop>
             <App />
         </ScrollToTop>
-    </BrowserRouter>,
+    </HashRouter>,
     document.getElementById('root')
 );
 

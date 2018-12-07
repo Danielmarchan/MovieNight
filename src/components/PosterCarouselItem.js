@@ -4,12 +4,14 @@ import axios from 'axios';
 
 class PosterCarouselItem extends Component {
   
-  state = {
-    name: "name",
-    date: "irst_air_date",
-    posterSrc: "https://media.comicbook.com/files/img/default-movie.png",
-    hover: false,
-    path: window.location.pathname.split('/')[2]
+  constructor() {
+        super();
+        this.state = {
+      name: "name",
+      date: "irst_air_date",
+      posterSrc: "https://media.comicbook.com/files/img/default-movie.png",
+      hover: false,
+    }
   }
   
   /*Methods*/
@@ -41,13 +43,13 @@ class PosterCarouselItem extends Component {
   componentWillMount = () => {
     
     /*Use correct attributes for movies or tv shows*/
-    if (this.state.path === "movies") {
+    if (this.props.match.path.split('/')[1] === "movies") {
       this.setState({
         name: "title",
         date: "release_date"
       });
     }
-    else if (this.state.path === "tv") {
+    else if (this.props.match.path.split('/')[1] === "tv") {
       this.setState({
         name: "name",
         date: "first_air_date"
@@ -63,10 +65,11 @@ class PosterCarouselItem extends Component {
   }
   
   render() {
+    console.log(this.props.match.path.split('/')[1])
         /*Link using id and movie/tv title with only alphanumeric characters and no spaces*/
     return (
         <Link
-          to={ "/" + this.state.path + '/' + this.props.item.id + '/' + this.props.item[this.state.name].replace(/[^\w\s]/gi, '').replace(/\s/g, '-')}
+          to={ this.props.match.path + '/' + this.props.item.id + '/' + this.props.item[this.state.name].replace(/[^\w\s]/gi, '').replace(/\s/g, '-')}
           onClick={this.handleGetData}
           >
           <div 

@@ -112,6 +112,7 @@ class TvInfo extends Component {
                         category="Similar TV Shows"
                         endpoint={`https://api.themoviedb.org/3/tv/${this.props.match.params.id}/similar?api_key=9512b36f031887e7c9ad226e2c26a6b2&language=en-US&page=1`}
                         setMovie={this.handleSetMovie}
+                        match={this.props.match}
                     />
                 </div>
             </div>
