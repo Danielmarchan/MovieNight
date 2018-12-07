@@ -63,6 +63,11 @@ class TrailerCarousel extends Component {
         this.handleGetData(this.props.endpoint);
     }
     
+    /*Update*/
+    componentDidUpdate = () => {
+        this.handleGetData(this.props.endpoint);
+    }
+    
     render() {
     /*Slider settings*/
     const settings = {

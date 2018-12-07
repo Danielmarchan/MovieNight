@@ -9,7 +9,6 @@ class PosterCarouselItem extends Component {
         this.state = {
       name: "name",
       date: "irst_air_date",
-      posterSrc: "https://media.comicbook.com/files/img/default-movie.png",
       hover: false,
       render: 0
     }
@@ -29,17 +28,6 @@ class PosterCarouselItem extends Component {
         });
   }
   
-  handleGetData = () => {
-    axios.get(`https://api.themoviedb.org/3/movie/${this.props.match.params.id}?api_key=9512b36f031887e7c9ad226e2c26a6b2&language=en-US
-    `)
-        .then(response => {
-             this.props.setMovie(response.data)
-        })
-        .catch(error => {
-          console.log('Error fetching and parsing data', error);
-        });
-  }
-  
   /*Mount*/
   componentWillMount = () => {
     
@@ -56,16 +44,17 @@ class PosterCarouselItem extends Component {
         date: "first_air_date"
       });
     }
-    
-    /*If image src is found, use it instead of default*/  
-    if (this.props.item.poster_path !== null) {
-      this.setState({
-        posterSrc: "https://image.tmdb.org/t/p/w185_and_h278_bestv2" + this.props.item.poster_path
-      });
-    }
   }
   
   render() {
+    /*If image src is found, use it instead of default*/
+    
+    let posterSrc = "https://media.comicbook.com/files/img/default-movie.png";
+    
+    if (this.props.item.poster_path !== "") {
+        posterSrc = "https://image.tmdb.org/t/p/w185_and_h278_bestv2" + this.props.item.poster_path;
+    }
+    
         /*Link using id and movie/tv title with only alphanumeric characters and no spaces*/
     return (
         <Link
@@ -78,7 +67,7 @@ class PosterCarouselItem extends Component {
           >
             <img 
                 className="poster"
-                src={this.state.posterSrc}
+                src={posterSrc}
                 alt={this.props.item.title}
             />
             
