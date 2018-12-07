@@ -1,13 +1,13 @@
 {
-  "main.css": "/movieNight/static/css/main.4ac0098a.chunk.css",
-  "main.js": "/movieNight/static/js/main.3cb6fb58.chunk.js",
-  "main.js.map": "/movieNight/static/js/main.3cb6fb58.chunk.js.map",
-  "static/js/1.02eb52a0.chunk.js": "/movieNight/static/js/1.02eb52a0.chunk.js",
-  "static/js/1.02eb52a0.chunk.js.map": "/movieNight/static/js/1.02eb52a0.chunk.js.map",
-  "runtime~main.js": "/movieNight/static/js/runtime~main.4c59729a.js",
-  "runtime~main.js.map": "/movieNight/static/js/runtime~main.4c59729a.js.map",
-  "static/css/main.4ac0098a.chunk.css.map": "/movieNight/static/css/main.4ac0098a.chunk.css.map",
-  "index.html": "/movieNight/index.html",
-  "precache-manifest.645a5fb524674a5e08ada6a018b2eb0c.js": "/movieNight/precache-manifest.645a5fb524674a5e08ada6a018b2eb0c.js",
-  "service-worker.js": "/movieNight/service-worker.js"
+  "main.css": "/MovieNight/static/css/main.bcfcbec7.chunk.css",
+  "main.js": "/MovieNight/static/js/main.b3a15131.chunk.js",
+  "main.js.map": "/MovieNight/static/js/main.b3a15131.chunk.js.map",
+  "static/js/1.02eb52a0.chunk.js": "/MovieNight/static/js/1.02eb52a0.chunk.js",
+  "static/js/1.02eb52a0.chunk.js.map": "/MovieNight/static/js/1.02eb52a0.chunk.js.map",
+  "runtime~main.js": "/MovieNight/static/js/runtime~main.23b44261.js",
+  "runtime~main.js.map": "/MovieNight/static/js/runtime~main.23b44261.js.map",
+  "static/css/main.bcfcbec7.chunk.css.map": "/MovieNight/static/css/main.bcfcbec7.chunk.css.map",
+  "index.html": "/MovieNight/index.html",
+  "precache-manifest.c2e8e9d36dd30aac699ba19626390b9f.js": "/MovieNight/precache-manifest.c2e8e9d36dd30aac699ba19626390b9f.js",
+  "service-worker.js": "/MovieNight/service-worker.js"
 }
