@@ -1,5 +1,4 @@
 import React from 'react';
-import Slider from "react-slick";
 import FontAwesome from 'react-fontawesome';
 
 /*Previous Arrow*/

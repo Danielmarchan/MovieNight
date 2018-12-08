@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {PureComponent} from 'react';
 import Slider from "react-slick";
 import axios from 'axios';
 
@@ -6,7 +6,7 @@ import axios from 'axios';
 import PosterCarouselItem from './PosterCarouselItem';
 import {NextArrow, PrevArrow} from './Arrows.js';
 
-class PosterCarousel extends Component {
+class PosterCarousel extends PureComponent {
     constructor() {
         super();
         this.state = {
@@ -32,9 +32,9 @@ class PosterCarousel extends Component {
     }
     
     handleMouseHover = () => {
-        this.setState(prevState => (
-            this.state.hover = !prevState.hover
-        ));
+        this.setState(prevState => ({
+            hover: !prevState.hover
+        }));
     }
     
     handleCalculateSlides = () => {
@@ -120,8 +120,12 @@ class PosterCarousel extends Component {
                                             item={item}
                                             key={item.id}
                                             match={this.props.match}
+                                            media={this.props.media}
                                         />
                                     );
+                                }
+                                else {
+                                    return <span />;
                                 }
                             })
                         }

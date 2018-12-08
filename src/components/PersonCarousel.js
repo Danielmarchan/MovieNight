@@ -1,9 +1,9 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import Slider from "react-slick";
 import {NextArrow, PrevArrow} from './Arrows.js';
 import axios from 'axios';
 
-class PersonCarousel extends Component {
+class PersonCarousel extends PureComponent {
      constructor() {
         super();
         this.state = {

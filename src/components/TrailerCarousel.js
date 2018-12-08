@@ -1,11 +1,11 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import Slider from "react-slick";
 import axios from 'axios';
 
 /*Components*/
 import {NextArrow, PrevArrow} from './Arrows.js';
 
-class TrailerCarousel extends Component {
+class TrailerCarousel extends PureComponent {
     constructor() {
         super();
         this.state = {
@@ -31,9 +31,9 @@ class TrailerCarousel extends Component {
     }
     
     handleMouseHover = () => {
-      this.setState(prevState => (
-          this.state.hover = !prevState.hover
-      ));
+      this.setState(prevState => ({
+          hover: !prevState.hover
+      }));
     }
     
     handleCalculateSlides = () => {
@@ -57,7 +57,7 @@ class TrailerCarousel extends Component {
     }
     
     /*Mount*/
-    componentDidMount = () => {
+    componentWillMount = () => {
         window.addEventListener("resize", this.handleUpdateSlides);
         
         this.handleGetData(this.props.endpoint);
@@ -100,7 +100,7 @@ class TrailerCarousel extends Component {
                                 return(
                                 <div
                                     key={item.id}
-                                    class="trailer-container"
+                                    className="trailer-container"
                                 >
                                     <div className="trailer-item">
                                         <iframe src={`https://www.youtube.com/embed/${item.key}`} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen;" allowfullscreen></iframe>

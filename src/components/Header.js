@@ -1,10 +1,14 @@
-import React, {Component} from'react';
+import React, {PureComponent} from'react';
 import FontAwesome from 'react-fontawesome';
 import { Link, NavLink } from 'react-router-dom';
 
-class Header extends Component {
+/*Comonents*/
+import Search from './Search';
+
+class Header extends PureComponent {
     state = {
-        bg: {background: "linear-gradient( transparent)"}
+        bg: {background: "linear-gradient( transparent)"},
+        searchVisible: false
     }
     
     /*Methods*/
@@ -14,6 +18,21 @@ class Header extends Component {
         } else {
           this.setState({bg: {background: "linear-gradient( transparent)"}})
         }
+    }
+    
+    handleShowSearch = () => {
+        this.setState(prevState => ({
+            searchVisible: true    
+        }));
+        if (!this.state.searchVisible) {
+            
+        }
+    }
+    
+    handleHideSearch = () => {
+        this.setState(prevState => ({
+            searchVisible: false    
+        }));
     }
 
     /*Mount*/
@@ -32,10 +51,18 @@ class Header extends Component {
                     <NavLink className="navlink" to="/movies"><h3>Movies</h3></NavLink>
                     <NavLink className="navlink" to="/tv"><h3>TV Shows</h3></NavLink>
                 </div>
-                <div className="search">
+                <div
+                    className="search-header"
+                    onClick={this.handleShowSearch}
+                >
                     <FontAwesome className="search-icon" name='search' />
                     <h3>Search</h3>
                 </div>
+                <Search
+                    searchVisible={this.state.searchVisible}
+                    hideSearch={this.handleHideSearch}
+                    match={this.props.match}
+                />
             </div>
         );   
     }

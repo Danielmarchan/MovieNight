@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import Slider from "react-slick";
 import { Link } from 'react-router-dom';
 import axios from 'axios';
@@ -6,7 +6,7 @@ import axios from 'axios';
 /*Components*/
 import {NextArrow, PrevArrow} from './Arrows.js';
 
-class Trending extends Component {
+class Trending extends PureComponent {
     
     constructor() {
         super();
@@ -34,9 +34,9 @@ class Trending extends Component {
     }
     
     handleMouseHover = () => {
-      this.setState(prevState => (
-          this.state.hover = !prevState.hover
-      ));
+      this.setState(prevState => ({
+          hover: !prevState.hover
+      }));
     }
     
     /*Mount*/
@@ -96,17 +96,17 @@ class Trending extends Component {
                     return(
                         <Link 
                           key={item.id}
-                          to={ this.props.match.path + '/' + item.id + '/' + item[this.state.  name].replace(/[^\w\s]/gi, '').replace(/\s/g, '-') }
+                          to={ this.props.match.path + '/' + item.id + '/' + item[this.state.name].replace(/[^\w\s]/gi, '').replace(/\s/g, '-') }
                         >
                             <div className="trending-item">
                                 <img 
                                     className="trending-image"
                                     src={backdropSrc}
-                                    alt={item[this.state.  name]}
+                                    alt={item[this.state.name]}
                                 />
                                 <div className="trending-info">
                                     <h3>Popular {this.state.format}</h3>
-                                    <h1>{item[this.state.  name]}</h1>
+                                    <h1>{item[this.state.name]}</h1>
                                 </div>
                             </div>
                         </Link>

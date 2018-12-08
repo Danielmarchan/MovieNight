@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {PureComponent} from 'react';
 import axios from 'axios';
 
 /*Components*/
@@ -7,7 +7,7 @@ import TrailerCarousel from './TrailerCarousel';
 import PersonCarousel from './PersonCarousel';
 import PosterCarousel from './PosterCarousel';
 
-class MovieInfo extends Component {
+class MovieInfo extends PureComponent {
     
     state = {
         movie: {},
@@ -128,6 +128,7 @@ class MovieInfo extends Component {
                     <PosterCarousel 
                         category="Similar Movies"
                         endpoint={`https://api.themoviedb.org/3/movie/${this.props.match.params.id}/similar?api_key=9512b36f031887e7c9ad226e2c26a6b2&language=en-US&page=1`}
+                        media="movie"
                         match={this.props.match}
                     />
                 </div>

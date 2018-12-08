@@ -1,8 +1,8 @@
-import React, {Component} from 'react';
+import React, {PureComponent} from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import axios from 'axios';
 
-class PosterCarouselItem extends Component {
+class PosterCarouselItem extends PureComponent {
   
   constructor() {
         super();
@@ -10,7 +10,8 @@ class PosterCarouselItem extends Component {
       name: "name",
       date: "irst_air_date",
       hover: false,
-      render: 0
+      render: 0,
+      path: "/tv"
     }
   }
   
@@ -32,33 +33,37 @@ class PosterCarouselItem extends Component {
   componentWillMount = () => {
     
     /*Use correct attributes for movies or tv shows*/
-    if (this.props.match.path.split('/')[1] === "movies") {
+    if (this.props.media == "movie") {
       this.setState({
         name: "title",
-        date: "release_date"
+        date: "release_date",
+        path: "/movies"
       });
     }
-    else if (this.props.match.path.split('/')[1] === "tv") {
+    else if (this.props.media == "tv") {
       this.setState({
         name: "name",
-        date: "first_air_date"
+        date: "first_air_date",
+        path: "/tv"
       });
     }
   }
   
   render() {
+    
     /*If image src is found, use it instead of default*/
     
     let posterSrc = "https://media.comicbook.com/files/img/default-movie.png";
     
-    if (this.props.item.poster_path !== "") {
+    if (this.props.item.poster_path !== "" && this.props.item.poster_path != null) {
         posterSrc = "https://image.tmdb.org/t/p/w185_and_h278_bestv2" + this.props.item.poster_path;
     }
     
         /*Link using id and movie/tv title with only alphanumeric characters and no spaces*/
     return (
         <Link
-          to={ '/' + this.props.match.path.split('/')[1] + '/' + this.props.item.id + '/' + this.props.item[this.state.name].replace(/[^\w\s]/gi, '').replace(/\s/g, '-')}
+          to={ this.state.path + '/' + this.props.item.id + '/' + this.props.item[this.state.name].replace(/[^\w\s]/gi, '').replace(/\s/g, '-')}
+          onClick={this.props.hideSearch}
           >
           <div 
             onMouseEnter={this.handleMouseEnter}
