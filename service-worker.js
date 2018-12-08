@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/MovieNight/precache-manifest.f75bce0e690d450a0877db69311cc2d4.js"
+  "/MovieNight/precache-manifest.02f1c73753a49df401ff12ec5e58a9bf.js"
 );
 
 workbox.clientsClaim();
