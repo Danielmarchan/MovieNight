@@ -63,7 +63,7 @@ class TvInfo extends PureComponent {
     }
     
     /*Mount*/
-    componentDidMount = () => {
+    componentWillMount = () => {
         this.handleGetData();
     }
     
