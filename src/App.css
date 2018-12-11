@@ -348,7 +348,7 @@ a {
   .grid-card {
     font-weight: 600;
     display: grid;
-    template-columns: 1fr 4fr;
+    grid-template-columns: 1fr 4fr;
   }
   .grid-card h1, h2, h3 {
     margin: 5px 0;
