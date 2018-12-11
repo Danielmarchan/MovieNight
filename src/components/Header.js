@@ -1,16 +1,14 @@
-import React, {PureComponent} from'react';
+import React, {Component} from'react';
 import FontAwesome from 'react-fontawesome';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 /*Comonents*/
 import Search from './Search';
 
-class Header extends PureComponent {
+class Header extends Component {
     state = {
         bg: {background: "linear-gradient( transparent)"},
-        searchVisible: false,
-        movieClass: "navlink",
-        tvClass: "navlink"
+        searchVisible: false
     }
     
     /*Methods*/
@@ -36,36 +34,15 @@ class Header extends PureComponent {
             searchVisible: false    
         }));
     }
-    
-    handleLinkClass=() => {
-        if (window.location.hash.split('/')[1] === "movies") {
-            this.setState({
-                movieClass: "navlink active",
-                tvClass: "navlink" 
-            });
-        }
-        else if (window.location.hash.split('/')[1] === "tv") {
-            this.setState({
-                movieClass: "navlink",
-                tvClass: "navlink active" 
-            });
-        }
-    }
 
     /*Mount*/
-    componentDidMount = () => {
+    componentWillMount = () => {
         window.addEventListener('scroll', this.listenScrollEvent);
-        this.handleLinkClass();
     }
     
     /*Update*/
-    componentDidUpdate = () => {
-        window.addEventListener('scroll', this.listenScrollEvent);
-        this.handleLinkClass();
-    }
     
     render() {
-        
         return (
             <div
                 className="header"
@@ -73,8 +50,8 @@ class Header extends PureComponent {
             >
                 <Link to="/"><h1 className="logo">Movie<span className="white-text">Night</span></h1></Link>
                 <div className="tabs">
-                    <Link className={this.state.movieClass} to="/movies"><h3>Movies</h3></Link>
-                    <Link className={this.state.tvClass} to="/tv"><h3>TV Shows</h3></Link>
+                    <NavLink className="navlink" to="/movies"><h3>Movies</h3></NavLink>
+                    <NavLink className="navlink" to="/tv"><h3>TV Shows</h3></NavLink>
                 </div>
                 <div
                     className="search-header"

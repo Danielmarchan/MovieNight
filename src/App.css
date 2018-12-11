@@ -102,7 +102,7 @@ a {
   }
   .navlink {
     display: inline-block;
-    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
     height: 55px;
   }
   .tabs .active {
@@ -158,8 +158,8 @@ a {
     margin: 0 auto;
     vertical-align: middle;
     max-height: 600px;
-    -webkit-object-fit: cover;
-    -webkit-object-position: 50% 0;
+    object-fit: cover;
+    object-position: 50% 0;
   }
   
   /*Movies / Tv */
@@ -307,7 +307,7 @@ a {
     border-bottom: solid 1px #909090;
     padding: 5px;
     display: flex;
-    -webkit-justify-content: flex-start;
+    justify-content: flex-start;
     width: 90%;
     margin-top: 100px;
     margin-left: 5%;
@@ -429,10 +429,10 @@ a {
     margin: 0 auto;
     vertical-align: middle;
     max-height: 600px;
-    -webkit-object-fit: cover;
-    -webkit-object-position: 50% 0;
-    -webkit-filter: grayscale;
-    -webkit-filter: brightness(70%); 
+    object-fit: cover;
+    object-position: 50% 0;
+    filter: grayscale;
+    filter: brightness(70%); 
   }
   .trending-info {
     position: absolute;
