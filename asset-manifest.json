@@ -1,13 +1,13 @@
 {
-  "main.css": "/MovieNight/static/css/main.102bb7f8.chunk.css",
-  "main.js": "/MovieNight/static/js/main.89a78fff.chunk.js",
-  "main.js.map": "/MovieNight/static/js/main.89a78fff.chunk.js.map",
+  "main.css": "/MovieNight/static/css/main.479e0585.chunk.css",
+  "main.js": "/MovieNight/static/js/main.d8bd0ecc.chunk.js",
+  "main.js.map": "/MovieNight/static/js/main.d8bd0ecc.chunk.js.map",
   "static/js/1.989d5e5c.chunk.js": "/MovieNight/static/js/1.989d5e5c.chunk.js",
   "static/js/1.989d5e5c.chunk.js.map": "/MovieNight/static/js/1.989d5e5c.chunk.js.map",
   "runtime~main.js": "/MovieNight/static/js/runtime~main.23b44261.js",
   "runtime~main.js.map": "/MovieNight/static/js/runtime~main.23b44261.js.map",
-  "static/css/main.102bb7f8.chunk.css.map": "/MovieNight/static/css/main.102bb7f8.chunk.css.map",
+  "static/css/main.479e0585.chunk.css.map": "/MovieNight/static/css/main.479e0585.chunk.css.map",
   "index.html": "/MovieNight/index.html",
-  "precache-manifest.0e4aa94afe0da2c7188018e49a523186.js": "/MovieNight/precache-manifest.0e4aa94afe0da2c7188018e49a523186.js",
+  "precache-manifest.11b276ba72c59865ad24129ce07cd21d.js": "/MovieNight/precache-manifest.11b276ba72c59865ad24129ce07cd21d.js",
   "service-worker.js": "/MovieNight/service-worker.js"
 }
