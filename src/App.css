@@ -1,18 +1,19 @@
 /*
 Index:
-  -Global
-  -Components
-    -Arrows
-    -Footer
-    -Header
-    -MovieInfo / TvInfo
-    -Movies / Tv
-    -NotFound
-    -PersonCarousel
-    -PosterCarousel
-    -TopCard
-    -TrailerCarousel
-    -Trending
+  -Global [19]
+  -Components [36]
+    -Arrows [38]
+    -Footer [70]
+    -Header [79]
+    -MovieInfo / TvInfo [146]
+    -Movies / Tv [165]
+    -NotFound [170]
+    -PersonCarousel [182]
+    -PosterCarousel [226]
+    -Search [280]
+    -TopCard [344]
+    -TrailerCarousel [397]
+    -Trending [416]
   -Media Queries
 */
 
