@@ -432,8 +432,6 @@ a {
     max-height: 600px;
     object-fit: cover;
     object-position: 50% 0;
-    filter: grayscale;
-    filter: brightness(70%); 
   }
   .trending-info {
     position: absolute;

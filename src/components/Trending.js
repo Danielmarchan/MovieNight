@@ -33,10 +33,16 @@ class Trending extends PureComponent {
             
     }
     
-    handleMouseHover = () => {
-      this.setState(prevState => ({
-          hover: !prevState.hover
-      }));
+    handleMouseEnter = () => {
+      this.setState({
+          hover: true
+      });
+    }
+    
+    handleMouseLeave = () => {
+      this.setState({
+          hover: false
+      });
     }
     
     /*Mount*/
@@ -77,8 +83,8 @@ class Trending extends PureComponent {
     
     return (
       <div 
-        onMouseEnter={this.handleMouseHover}
-        onMouseLeave={this.handleMouseHover}
+        onMouseEnter={this.handleMouseEnter}
+        onMouseLeave={this.handleMouseLeave}
         className="trending-container"
       >
         <Slider {...settings}>
